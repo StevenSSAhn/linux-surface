@@ -1,67 +1,89 @@
 # Production Runbook
 
 Everything below is ready to execute. It has **not** been run: the Higgsfield
-account is on the `free` plan with **0 credits**, and every `generate_*` step
-is paid. Add credits, then work down this list.
+workspace is on the `free` plan with **0 credits**, and every `generate_*` step
+is paid.
+
+## Budget shape
+
+Read the shot list before picking models. **Ten of the fourteen shots barely
+move** — "camera perfectly still", "static", "nothing but breath", "otherwise a
+photograph". Only four have real camera work: the slow push in scene 12, the
+drift back in scene 10, and the two walking/static-follow frames.
+
+So don't spend video credits fourteen times. Spend them four times:
+
+| Shots | Treatment |
+|---|---|
+| 12, 10, and the two you judge need it | Image-to-video on a good model |
+| the rest | Strong stills + a slow Ken Burns move in the editor — free |
+
+Stills are cheap to reroll, clips are not, and pushing a near-static frame
+through a video model is how faces go soft. Generating the still and moving it
+in the edit looks *better* here, not just cheaper.
 
 ## Pipeline
 
-Stills first, then image-to-video. Generating each scene directly as
-text-to-video gives you fourteen strangers; locking a portrait per character
-first and passing it as a reference is what makes the recurring faces hold.
-
-### Step 1 — Lock the four characters
-
-One `generate_image` call per character in `script-en.md` § *Character bible*
-(NARRATOR-MAN, SHOP-WOMAN, SUIT-MAN, PRAYER-MAN). Neutral portrait, same
-lighting for all four. Keep the returned media ids.
-
-### Step 2 — Generate 14 stills
+### Step 1 — Generate 14 stills
 
 One `generate_image` per scene, using the scene's **Image** prompt plus the
-global style suffix. For the ten scenes with a locked character, pass that
-character's portrait as the reference image. Aspect ratio 9:16.
+global style suffix from `script-en.md`. Aspect ratio 9:16.
 
-Review all fourteen as a contact sheet before spending any video credits —
-a bad still is cheap to redo, a bad clip is not.
+No character locking is needed — the source uses unrelated people per scene
+(see `source-analysis.md`). The one exception is the suit man in scenes 7 and
+10: same dark suit, same build, shot from behind both times. No face to match,
+so matching the wardrobe in the prompt is enough.
 
-### Step 3 — Animate each still
+Review all fourteen as a contact sheet before spending any video credits.
 
-One `generate_video` per scene, image-to-video, seeded with the still from
-step 2 and driven by the scene's **Motion** note. Request the scene's duration
-from the shot list (most models quantize to 5s — generate 5s and trim in the
-edit; scene 4 is generated at minimum length and cut hard to 2s).
+### Step 2 — Animate the four that move
 
-### Step 4 — Narration
+`generate_video`, image-to-video, seeded with the still and driven by the
+scene's **Motion** note. Most models quantise to 5s — generate 5s and trim.
 
-`list_voices` → pick a low, dry male voice in the 50s range, or `create_voice`
-if nothing fits. Then `generate_audio` on the full VO text from `script-en.md`,
-recorded as one continuous take rather than fourteen fragments — a single take
-keeps the cadence consistent and gives the edit room to breathe against the
-cuts.
+**Turn native audio off.** Seedance 2.0, Kling v3.0, Veo 3 and Gemini Omni all
+default to generating audio (`generate_audio: true` / `sound: "on"`). Ambient
+noise on every clip will fight the narration. Silent clips are also cheaper.
 
-### Step 5 — Assemble
+### Step 3 — Narration
 
-Cut the clips to the shot-list timings against the narration track, lay in the
-music bed at −22 LUFS, burn in `subtitles.srt` with the caption style from
-`script-en.md`. Optionally `upscale_video` the finished cut.
+This is where the video is won or lost. `list_voices`, pick a low, dry male
+voice — if nothing has the right texture, a dedicated TTS is worth going
+outside for. One voice, one continuous take of the whole script (see
+`script-en.md` § *The narration is one continuous read*), not fourteen
+fragments.
 
-Note: `ffmpeg` is **not** installed in this session's container — assembly
-either needs it installed, or gets done in an editor.
+### Step 4 — Assemble
 
-## Cost
+Cut the picture against the finished VO — cut points in the script, not the
+other way round. Ken Burns the ten static stills. Lay in the music bed at
+−22 LUFS. Burn in `subtitles.srt`, then nudge each card onto the actual
+narration. Build the scene 14 title card in English over the blank cover.
+Optionally `upscale_video` the finished cut.
 
-Cost scales with model choice and clip count: ~18 image generations
-(4 portraits + 14 stills, before retries), 14 video generations, 1 audio
-generation. Call `models_explore` for per-model pricing and `balance` to check
-the account before starting — don't take a number from this file, the routing
-changes.
+`ffmpeg` is **not** installed in this container — assembly needs it installed,
+or gets done in an editor.
 
-## What I could not verify
+## Model notes
 
-The source video could not be viewed directly from this session — YouTube is
-blocked by the environment's egress policy (`www.youtube.com:443` → 403). The
-shot list in `source-analysis.md` comes entirely from Higgsfield's server-side
-analysis of the URL, which fetched it on its own network. It is a good
-breakdown but it is a machine reading: the palette notes, casting details and
-timings should be spot-checked against the original before you commit credits.
+Higgsfield is a router, not a model. Through it: Veo 3, Kling v3.0,
+Seedance 2.0, Gemini Omni, Grok Video 1.5 for video; Nano Banana Pro,
+Soul 2.0, Cinema Studio for stills.
+
+Several of those are flagged `supports_unlim` — unlimited generations on some
+plans. For a project whose cost is dominated by rerolls, **check whether a paid
+plan unlocks `unlim` on Nano Banana Pro or Soul 2.0 before buying credits.**
+That matters more than which model you pick.
+
+Call `models_explore` for current pricing and `balance` before starting — don't
+take a number from this file.
+
+## What is unverified
+
+The source could not be viewed from this session (YouTube blocked by egress
+policy, `403`, checked twice). The shot list comes from two independent
+server-side analysis passes which **disagree on casting, timing and shot
+framing** — see `source-analysis.md` § *Where the passes disagree*. The beat
+map and the warm/cool palette alternation are corroborated by both passes and
+can be trusted. Individual wardrobe and framing details cannot. Spot-check the
+original before committing credits.

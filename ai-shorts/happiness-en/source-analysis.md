@@ -1,39 +1,120 @@
 # Source Analysis — `youtube.com/shorts/6FxfsPN0uss`
 
-Scene-by-scene breakdown produced by Higgsfield's video analysis
-(job `859ac4ad-7685-4d29-86f7-886bbfdbd249`). Runtime 0:59, 14 scenes.
+The video could not be viewed directly: YouTube is blocked by this
+environment's egress policy (`www.youtube.com:443` → 403, verified twice).
+Everything below comes from Higgsfield's server-side analysis, which fetches
+the URL on its own network.
 
-Note: the narration column below is the analyzer's English rendering of the
-original Korean voiceover. It is reference material for structure — the remake
-script does not reuse this phrasing.
+**Two independent passes were run.** They disagree in places, so this file
+records both and marks how much to trust each detail.
 
-| # | In | Out | Dur | Shot | Narration (reference) | Visual |
-|---|---|---|---|---|---|---|
-| 1 | 0:00 | 0:04 | 4s | Close-Up | If you want to be happy, appreciate every moment. Happiness is the ultimate human goal. | Man, 50s, light skin, black hair in a bun, glasses, white shirt. Dark wooden table, white ceramic cup. Static, natural light from rear window. Warm vintage palette. |
-| 2 | 0:05 | 0:09 | 5s | Medium | However, the effort to be happy stems from believing happiness comes from acquisition. | Woman, 30s, pale skin, black bob, black dress. Back to camera, looking into a jewelry store window. Muted teal/orange, shop interior lights. |
-| 3 | 0:10 | 0:14 | 5s | Medium | Possession brings boredom; lack brings misery. Happiness is a mirage; pain is life's default. | Woman, 20s, tan skin, black ponytail, light blue tank top. On a bed surrounded by shopping bags, looking at a phone. Soft diffused indoor light. |
-| 4 | 0:15 | 0:16 | 2s | Medium | Gracián said happiness is simply the absence of pain. | Man, 30s, tanned, glasses, blue shirt, red backpack. Outdoors drinking from a clear bottle, mountain backdrop. Bright direct sun. |
-| 5 | 0:17 | 0:21 | 5s | Close-Up | The satisfaction of hunger vanishing isn't happiness; it's the cessation of the pain of hunger. | Man from scene 1. Restaurant under a red shaded lamp, deeply satisfied expression. Low-key lighting, hard shadows. |
-| 6 | 0:22 | 0:26 | 5s | Medium | True comfort felt upon entering warmth after cold is due to the pain of cold vanishing. | Empty leather lounge chair beside a lit fireplace. Snow falling outside the window. Warm firelight against cool blue moonlight. |
-| 7 | 0:27 | 0:31 | 5s | Wide | Life is the beginning of pain from birth. With body and mind, pain is unavoidable. | Man in a dark suit, back to camera, brown leather bag, walking a narrow cobblestone alley. Sunlight from above, desaturated. |
-| 8 | 0:32 | 0:35 | 4s | Close-Up | Striving for things as a pretext for happiness only leaves greater futility and emptiness. | Man, 40s, mustache, glasses, white shirt. Browsing clothes on hangers in a closet. Soft warm indoor light. |
-| 9 | 0:36 | 0:39 | 4s | Close-Up | Desire doesn't end when satisfied. It creates even greater desire. | Woman from scene 2, in profile. Examining colored perfume bottles on a shelf. Dim cinematic light, rich saturation. |
-| 10 | 0:40 | 0:43 | 4s | Wide | No matter what humans possess, they are beings that cannot find absolute satisfaction. | Silhouette of the man from scene 7 on a balcony, overlooking a vast city at night. High-contrast black and yellow. |
-| 11 | 0:44 | 0:47 | 4s | Close-Up | Do you want to be happy? Then live with gratitude for every passing moment. | Man from scene 8, eyes closed, hands clasped near his face in prayer. Side profile, dramatic rim light. |
-| 12 | 0:48 | 0:53 | 6s | Medium | Eating a warm meal, sleeping well, and hearing a loved one's voice makes life full. | Man, 60s, white hair, glasses, blue shirt. Red sofa, speaking into a black corded phone. Lamp-lit domestic interior. |
-| 13 | 0:54 | 0:56 | 3s | Wide | If life is less painful, it is successful in itself. | Static calm lake reflecting trees under a cloudy sky. Muted green and blue, soft daylight. |
-| 14 | 0:57 | 0:59 | 3s | Wide | This content is from the book *The Eyes that Read People* by Gracián. | Abstract book cover, blocks of black, green and orange. Centered, flat lighting. |
+| Pass | Job | Run |
+|---|---|---|
+| A | `859ac4ad-7685-4d29-86f7-886bbfdbd249` | 2026-07-30 00:17 |
+| B | `b96b79f5-f47b-42cd-9db4-97fe080f0200` | 2026-07-30 18:14 |
 
-## Structural read
+Pass B is substantially more detailed (wardrobe, props, light direction, wall
+color) and its timecodes are internally consistent. **Where they conflict,
+follow B.**
 
-- **Beat map:** hook (1) → false premise (2–3) → thesis (4) → three proofs of the
-  thesis (5–7) → escalation of the false premise (8–10) → turn (11) → payoff
-  (12–13) → attribution (14).
-- **Cut rhythm:** 4–5s in the setup, tightening to 3–4s through the escalation,
-  then a long 6s breath on the emotional payoff. The 2s cut at scene 4 is the
-  only jolt in the edit and it lands exactly on the thesis line.
-- **Recurring faces:** three characters repeat (scenes 1/5, 2/9, 7/10, 8/11).
-  This is what makes it read as a film rather than a stock reel, and it is the
-  main thing the remake has to preserve.
-- **Palette:** warm amber interiors against cool desaturated exteriors,
-  consistently. Every "pain" beat is cool; every "relief" beat is warm.
+---
+
+## Timing — use Pass B
+
+Pass A's cuts left 1-second gaps between scenes and did not sum to 59s. Pass B
+is contiguous and sums exactly.
+
+| # | In | Out | Dur | Shot (B) |
+|---|---|---|---|---|
+| 1 | 0:00 | 0:04 | 4s | Medium |
+| 2 | 0:04 | 0:09 | 5s | Wide |
+| 3 | 0:09 | 0:14 | 5s | Medium |
+| 4 | 0:14 | 0:17 | 3s | Wide |
+| 5 | 0:17 | 0:21 | 4s | Medium |
+| 6 | 0:21 | 0:26 | 5s | Wide |
+| 7 | 0:26 | 0:31 | 5s | Wide |
+| 8 | 0:31 | 0:35 | 4s | Close-Up |
+| 9 | 0:35 | 0:39 | 4s | Medium Close-Up |
+| 10 | 0:39 | 0:43 | 4s | Wide |
+| 11 | 0:43 | 0:47 | 4s | Close-Up |
+| 12 | 0:47 | 0:53 | 6s | Medium |
+| 13 | 0:53 | 0:56 | 3s | Wide |
+| 14 | 0:56 | 0:59 | 3s | Medium |
+
+Total 59s. Cut rhythm: 4–5s through the setup, tightening to 4s across the
+escalation, one 6s hold on the payoff, then 3s + 3s to close.
+
+---
+
+## Scene detail (Pass B)
+
+| # | Narration | Visual |
+|---|---|---|
+| 1 | If you want to be happy, appreciate every moment. | Man ~60, light tan skin, receding black hair, thick black-rimmed glasses, white dress shirt. Seated side-on at a dark wooden table, looking out a large window with white shutters, sipping from a small white espresso cup. Bright natural window light, deep room shadows, warm cinematic grade. Framed document on the wall behind. |
+| 2 | Man's ultimate goal is happiness. However, trying to be happy… | Woman, 30s, fair skin, short black bob, sleeveless black dress, red purse on shoulder. On a dark sidewalk at night, looking into a brightly lit jewelry shop window, rows of cases in warm yellow light. Surroundings dark blue. Static camera. |
+| 3 | …is because of the idea that if you get something, you can be happy. Once you have it, you get bored; if you don't, you suffer. | Woman, 20s, tan skin, black hair in a high bun, light blue ribbed top. Sitting on a bed among red, blue and green shopping bags, looking down at a dark phone in both hands. Soft neutral light, clean modern bedroom. |
+| 4 | Happiness is a mirage, and pain is the default of life. Gracián said: happiness is the absence of pain. | Man, 40s, light tan skin, black hair, glasses, blue short-sleeve button-down, red backpack. Standing in a green valley drinking from a clear plastic bottle. Towering steep cliffs behind, bright midday sun, vivid greens and blues. |
+| 5 | The satisfaction when hunger disappears is not happiness — the pain of hunger has stopped. | Man, 50s, fair skin, black hair, black-rimmed glasses, light blue shirt. In a dark wooden diner booth, looking up and away from camera. Red pendant lamp overhead as warm key. Dark background, street lamp through a window. |
+| 6 | The comfort of entering a warm place after shivering in the cold is also the pain of cold disappearing. | Cozy living room, static. Fire in a fireplace at left, red cushioned armchair centre, large window right showing snow at dusk. Floor lamp with warm yellow glow. Dark teal walls, warm wood floor. Orange fire against blue snow. |
+| 7 | Human life is the beginning of pain from birth. Because we have bodies and minds, pain cannot be avoided. | Man in a dark grey suit, black hair, brown briefcase in right hand, from behind, walking away down a narrow downhill cobblestone street. Tall small-windowed buildings flanking. Bright daylight from above, long shadows. Static camera. |
+| 8 | If you try to have something as an excuse for happiness, only greater futility and emptiness remain. | Man, 50s, tan skin, thin black mustache, black hair, black-rimmed glasses, white dress shirt. Looking into a well-lit walk-in closet, reaching for a light shirt on a hanger. Soft light from inside the closet. |
+| 9 | Desire does not end when it is fulfilled. It creates greater desire. | Woman, 20s, fair skin, short black hair, large gold earrings, blue dress. In a shop of wooden shelves full of bottles, holding a blue glass perfume bottle in both hands, raising it to her nose. Warm diffused light. |
+| 10 | No matter what material you have, a human being can never be satisfied. | Man in a dark suit from behind on a balcony at night, overlooking a vast dense city of thousands of yellow and white lights. Black sky. Low light, all of it from the distant city. Static camera. |
+| 11 | Do you want to be happy? Then just live appreciating every moment. | Elderly man, 60s, tan skin, grey mustache, grey hair, glasses, white shirt. Eyes closed, hands clasped near his chin in a prayer gesture. Dramatic directional side light, deep shadows, dark defocused background. |
+| 12 | If you can eat a warm meal today, sleep comfortably, and hear the voice of a loved one, it is already a full life. | Elderly man, fair skin, white hair, thick black glasses, navy polo, khakis. On a red sofa, speaking into a vintage black corded telephone receiver. Yellow-shaded lamp lighting from above-left. Cream wall, small framed picture. |
+| 13 | Life is successful in itself if it is less painful. | Tranquil lake in daylight, static. Still water mirroring green trees on the far bank and large white clouds. Soft natural light, naturalistic grade, rich greens and blues. |
+| 14 | The content just now is from the book *Gracián's Eyes for Reading People*. | Static book cover, **titled in Korean characters**. Four horizontal bands: dark green top, wide black, then thin red and yellow-orange at the bottom. Flat even light, dark background. |
+
+---
+
+## Where the passes disagree
+
+Treat these as unverified until someone eyes the original.
+
+**Recurring characters — Pass A claimed them, Pass B contradicts them.**
+Pass A wrote "same man from scene 1" and "profile of woman from scene 2".
+Pass B describes each independently, with details that do not match:
+
+| Pair | Pass A | Pass B |
+|---|---|---|
+| 2 / 9 | same woman | 30s, black dress, red purse ↔ 20s, blue dress, gold earrings |
+| 8 / 11 | same man | black hair + black mustache ↔ grey hair + grey mustache |
+| 1 / 5 | same man | white dress shirt, espresso ↔ light blue shirt, diner |
+| 7 / 10 | same man | dark grey suit, from behind ↔ dark suit, from behind — **both agree** |
+
+Only the suit man (7/10) survives both readings. The likeliest reading is that
+this is a **stock-style montage of unrelated people**, not a character piece.
+Pass A's cross-references look like the model inferring continuity that isn't
+there. This matters: it removes the main technical difficulty from the remake
+and weakens the case for character-locking tools.
+
+**Narration runs continuously across the cuts.** Pass B shows scene 2's audio
+ending on "However, trying to be happy…" and scene 3's beginning "…is because
+of the idea that". One sentence spans the cut. The voiceover is a single
+unbroken read; only the picture cuts. Pass A's per-scene lines obscured this.
+
+**Scene 4 is 3s, not 2s**, and 13 and 14 are also 3s, so it is not the unique
+jolt Pass A's timings implied. It does still carry the thesis line in both
+passes — the placement holds even though the emphasis doesn't.
+
+**Scene 1 framing:** A says Close-Up, black hair in a bun. B says Medium,
+receding black hair, seen side-on against a shuttered window. B is more
+specific and internally coherent.
+
+**Scene labels** ("Product Information", "Usage Scenarios") are the analyzer's
+own e-commerce taxonomy applied to a philosophy video. They carry no meaning
+here — ignore them in both passes.
+
+---
+
+## Structural read (revised)
+
+- **Beat map:** hook (1) → false premise (2–3) → thesis (4) → three proofs
+  (5–7) → escalation (8–10) → turn (11) → payoff (12–13) → attribution (14).
+  Both passes support this; it is the most reliable thing in the analysis.
+- **Palette alternation:** cool for the pain beats (2, 3, 7, 10), warm for the
+  relief beats (1, 5, 6, 12). Scene 6 makes it literal — orange fire against
+  blue snow in one frame. Both passes agree on this, and it is doing the
+  argument silently under the narration.
+- **The edit does not punctuate the sentences.** Picture cuts land mid-thought.
+  That's what keeps a 14-cut minute from feeling like a slideshow.

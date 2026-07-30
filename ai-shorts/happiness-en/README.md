@@ -7,7 +7,7 @@ An English-language recreation of a 59-second Korean YouTube Short
 
 | File | Purpose |
 |---|---|
-| `source-analysis.md` | Scene-by-scene breakdown of the original (14 scenes, timings, shots, visuals) |
+| `source-analysis.md` | Scene-by-scene breakdown of the original, from two analysis passes, with the points where they disagree |
 | `script-en.md` | The English production pack: narration, image prompts, motion prompts, per scene |
 | `subtitles.srt` | Burn-in / upload-ready captions, timed to the shot list |
 | `production-runbook.md` | Exact tool sequence to actually generate it |
@@ -25,6 +25,16 @@ narrator, no on-camera speaker.
 
 ## Status
 
-Pre-production is complete. Generation is **not run** — the Higgsfield account
-is on the free plan with 0 credits. See `production-runbook.md` for the
-cost breakdown and the command sequence to execute once credits are available.
+Pre-production is complete. Generation is **not run** — the Higgsfield
+workspace is on the free plan with 0 credits. See `production-runbook.md` for
+the budget shape and the sequence to execute once credits are available.
+
+## Confidence
+
+The source video could not be viewed directly — YouTube is blocked by this
+environment's egress policy. The breakdown comes from two independent
+server-side analysis passes, which disagree on casting, some timings and some
+framing. What both passes corroborate (the beat map, the warm/cool palette
+alternation, the continuous narration) is reliable; individual wardrobe and
+shot-type details are not. Spot-check against the original before spending
+credits.

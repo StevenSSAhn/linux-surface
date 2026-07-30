@@ -3,28 +3,61 @@
 **Working title:** *Happiness Is Only the Absence of Pain*
 **Format:** 9:16, 1080×1920, 59s, 14 cuts
 **Voice:** single male narrator, 50s-sounding, unhurried, low and dry — never
-inspirational-uplift. Think a man stating something he has already accepted.
-**Music:** sparse solo piano or sustained cello pad, −22 LUFS under the VO, no
-drums, no build. It should not resolve.
+inspirational-uplift. A man stating something he has already accepted.
+**Music:** sparse solo piano or a sustained cello pad, −22 LUFS under the VO.
+No drums, no build. It should not resolve.
+
+> Revised against a second analysis pass of the source. Timings, the narration
+> structure and the casting approach all changed — see
+> `source-analysis.md` § *Where the passes disagree*.
 
 ---
 
-## Character bible (lock these before generating shots)
+## The narration is one continuous read
 
-Generate one portrait per character first, then reuse it as the reference image
-for every scene that character appears in. This is the single highest-leverage
-step — without it the film falls apart into stock footage.
+This is the single most important thing about the edit. In the source, a
+sentence runs straight across the cut between scenes 2 and 3 — the voiceover
+never pauses for the picture. Record the whole script below as **one take**,
+then cut the picture against it. Do not record fourteen fragments and butt them
+together; the seams will show and it will read as a slideshow.
 
-- **NARRATOR-MAN** *(scenes 1, 5)* — man, mid-50s, light skin, black hair pulled
-  into a low bun, thin wire glasses, plain white cotton shirt, close-trimmed
-  stubble, tired eyes, deep nasolabial lines.
-- **SHOP-WOMAN** *(scenes 2, 9)* — woman, early 30s, pale skin, sharp black bob
-  cut at the jaw, matte black slip dress, no jewelry, neutral expression.
-- **SUIT-MAN** *(scenes 7, 10)* — man, late 30s, dark charcoal two-piece suit,
-  brown leather satchel, short dark hair. Face never clearly shown.
-- **PRAYER-MAN** *(scenes 8, 11)* — man, mid-40s, thick dark mustache, square
-  glasses, white shirt with the sleeves rolled, receding hairline.
-- Scenes 3, 4, 12 use one-off characters; no reference lock needed.
+Cut points are marked `[N @ time]`. They fall where they fall — several land
+mid-sentence, and that is correct.
+
+> `[1 @ 0:00]` Everyone wants to be happy. It's the goal beneath everything.
+> `[2 @ 0:04]` But the chase comes from one idea — that getting the thing
+> `[3 @ 0:09]` delivers it. You get it, and you're bored. You lose it, and you ache.
+> `[4 @ 0:14]` Gracián: happiness is only the absence of pain.
+> `[5 @ 0:17]` Relief when hunger ends isn't joy. It's hunger's pain stopping.
+> `[6 @ 0:21]` The comfort of warmth after cold is only the cold, leaving.
+> `[7 @ 0:26]` To be born is to begin hurting. A body and a mind guarantee it.
+> `[8 @ 0:31]` Chase more in the name of happiness. A bigger emptiness stays.
+> `[9 @ 0:35]` Desire doesn't end when fed. It grows a bigger mouth.
+> `[10 @ 0:39]` Whatever we hold, we're built never to be satisfied.
+> `[11 @ 0:43]` You want to be happy? Be grateful for this passing moment.
+> `[12 @ 0:47]` A warm meal. Easy sleep. The voice of someone who loves you. That's already full.
+> `[13 @ 0:53]` If it hurts less, life already succeeded.
+> `[14 @ 0:56]` From Gracián's *The Eyes That Read People*.
+
+≈158 words over 59s — about 2.7 words/sec, which is the unhurried end. If the
+take runs long, cut words rather than speeding up; the pacing is the tone.
+
+---
+
+## Casting
+
+The second analysis pass indicates the source uses **fourteen unrelated
+people**, not a recurring cast. An earlier read claimed four characters
+repeated; the detailed pass contradicts it on hair, age and wardrobe in every
+pair but one.
+
+So: **no character bible, no identity locking.** Generate each scene's person
+independently. The only pair worth keeping consistent is the suit man in
+scenes 7 and 10, where both passes agree — and he is shot from behind both
+times, so matching the suit and the bag is enough. No face to match.
+
+This removes the hardest technical problem from the remake, and with it the
+main reason to prefer any particular generation platform.
 
 **Global style suffix** — append to every image prompt:
 
@@ -36,148 +69,141 @@ step — without it the film falls apart into stock footage.
 
 ## Shot list
 
-### 1 — Opening Hook · 0:00–0:04 · Close-Up
+### 1 · 0:00–0:04 · 4s · Medium
 
-> **VO:** "Everyone wants to be happy. We treat it as the whole point of being alive."
+- **Image:** man ~60, light tan skin, receding black hair, thick black-rimmed
+  glasses, white dress shirt. Seated side-on at a dark wooden table, looking
+  out a large window with white shutters, small white espresso cup in his right
+  hand. Bright natural window light, deep shadows in the room, warm grade. A
+  framed document on the wall behind him.
+- **Motion:** locked off. He raises the cup and sips, slowly. Nothing else.
 
-- **Image:** NARRATOR-MAN seated at a dark walnut table, both hands around a
-  white ceramic cup, steam rising. Backlit by a window behind him, late
-  afternoon. Warm amber vintage grade, dust in the light.
-- **Motion:** locked-off camera, no push. Steam drifts. He blinks once and
-  lowers his eyes. Nothing else moves.
+### 2 · 0:04–0:09 · 5s · Wide
 
-### 2 — False Premise · 0:05–0:09 · Medium
+- **Image:** woman, 30s, fair skin, short black bob, sleeveless black dress,
+  red purse on her shoulder. On a dark sidewalk at night, facing a brightly lit
+  jewelry shop window, rows of cases glowing warm yellow. Everything around her
+  dark blue.
+- **Motion:** static camera. She shifts her weight, keeps looking.
 
-> **VO:** "But that chase rests on a belief — that happiness is something you acquire."
+### 3 · 0:09–0:14 · 5s · Medium
 
-- **Image:** SHOP-WOMAN from behind, standing at a lit jewelry-store window at
-  night, faint reflection of her face in the glass. Teal street tones against
-  warm orange display lights.
-- **Motion:** very slow dolly in toward her back. She does not move.
+- **Image:** woman, 20s, tan skin, black hair in a high bun, light blue ribbed
+  top. Cross-legged on a bed among red, blue and green shopping bags, looking
+  down at a dark phone held in both hands. Soft neutral light, clean modern
+  bedroom.
+- **Motion:** static. Her thumb scrolls. Her expression doesn't change.
 
-### 3 — False Premise · 0:10–0:14 · Medium
+### 4 · 0:14–0:17 · 3s · Wide · **thesis**
 
-> **VO:** "Get it and you're bored. Lose it and you ache. Pain is the constant."
+- **Image:** man, 40s, light tan skin, black hair, glasses, blue short-sleeve
+  button-down, red backpack. Standing in a green valley drinking from a clear
+  plastic bottle, towering steep cliffs behind him. Bright midday sun, vivid
+  greens and blues.
+- **Motion:** he lowers the bottle and looks out at the cliffs. Camera still.
+- **Note:** the thesis line lands here. It's a short cut but not the shortest —
+  don't over-engineer it. The line does the work; let the frame be open and
+  bright against it.
 
-- **Image:** woman, early 20s, tan skin, black ponytail, pale blue tank top,
-  sitting cross-legged on an unmade bed ringed by opened shopping bags and
-  tissue paper, face lit from below by a phone. Soft diffused grey daylight.
-- **Motion:** static frame. Her thumb scrolls. Her expression does not change.
+### 5 · 0:17–0:21 · 4s · Medium
 
-### 4 — Thesis · 0:15–0:16 · Medium · **hard cut, 2s**
+- **Image:** man, 50s, fair skin, black hair, black-rimmed glasses, light blue
+  shirt. In a dark wooden diner booth, looking up and away from camera. Red
+  pendant lamp above as the key light. Dark background, a street lamp visible
+  through a window.
+- **Motion:** he exhales and settles back. Lamp light steady.
 
-> **VO:** "Happiness is only the absence of pain."
+### 6 · 0:21–0:26 · 5s · Wide
 
-- **Image:** man, 30s, tanned, glasses, blue hiking shirt, red backpack,
-  drinking from a clear bottle, hard midday sun, bare mountain ridge behind him.
-  Bright, high-contrast, almost overexposed sky.
-- **Motion:** none. Hold the frame flat. The abruptness is the point — cut in
-  and out clean, no transition on either side.
+- **Image:** cozy living room. Fire burning in a fireplace at left, a red
+  cushioned armchair centre, a large window at right showing snow falling at
+  dusk. Floor lamp beside the chair glowing warm yellow. Dark teal walls, warm
+  wood floor. No people.
+- **Motion:** firelight flickers, snow falls. Camera perfectly still.
+- **Note:** this frame holds the film's whole colour argument — orange fire
+  against blue snow in one shot. Don't let the grade split the difference.
 
-### 5 — Proof I · 0:17–0:21 · Close-Up
+### 7 · 0:26–0:31 · 5s · Wide
 
-> **VO:** "The relief when hunger ends isn't joy. It's the pain of hunger leaving."
+- **Image:** man in a dark grey suit, black hair, brown briefcase in his right
+  hand, seen from behind walking away down a narrow downhill cobblestone
+  street. Tall buildings with small windows on both sides. Bright daylight from
+  above, long shadows.
+- **Motion:** static camera; he walks away from it and never turns.
 
-- **Image:** NARRATOR-MAN in a dim restaurant booth under a red-shaded pendant
-  lamp, mid-meal, eyes half closed in satisfaction. Low-key, hard shadow across
-  half his face.
-- **Motion:** he exhales and sets down a fork. Lamp light flickers faintly.
+### 8 · 0:31–0:35 · 4s · Close-Up
 
-### 6 — Proof II · 0:22–0:26 · Medium
+- **Image:** man, 50s, tan skin, thin black mustache, black hair, black-rimmed
+  glasses, white dress shirt. Looking into a well-lit walk-in closet, reaching
+  for a light-coloured shirt on a hanger. Soft light from inside the closet.
+- **Motion:** hangers slide and clack. His hand keeps moving past the shirt.
 
-> **VO:** "That comfort of stepping into warmth out of the cold? Just cold, departing."
+### 9 · 0:35–0:39 · 4s · Medium Close-Up
 
-- **Image:** an empty worn leather lounge chair beside a lit fireplace; through
-  the window behind it, snow falling in blue moonlight. No people.
-- **Motion:** firelight flickers across the leather. Snow falls outside.
-  Camera perfectly still.
+- **Image:** woman, 20s, fair skin, short black hair, large gold earrings, blue
+  dress. In a shop lined with wooden shelves of bottles, holding a blue glass
+  perfume bottle in both hands and raising it to her nose. Warm diffused light.
+- **Motion:** she inhales, lowers the bottle, reaches toward another.
 
-### 7 — Proof III · 0:27–0:31 · Wide
+### 10 · 0:39–0:43 · 4s · Wide
 
-> **VO:** "To be born is to begin hurting. A body and a mind guarantee it."
-
-- **Image:** SUIT-MAN from behind, small in frame, walking away down a narrow
-  cobblestone alley between tall stone walls, a single shaft of sunlight from
-  above. Desaturated, cool.
-- **Motion:** slow handheld follow behind him. He never turns around.
-
-### 8 — Escalation · 0:32–0:35 · Close-Up
-
-> **VO:** "Chasing more, in the name of happiness, only deepens the emptiness."
-
-- **Image:** PRAYER-MAN pushing shirts along a closet rail, hand in frame,
-  looking at none of them. Soft warm tungsten light.
-- **Motion:** hangers slide and clack past. His hand keeps moving after the
-  frame should have stopped.
-
-### 9 — Escalation · 0:36–0:39 · Close-Up
-
-> **VO:** "Desire doesn't end when it's fed. It grows a bigger mouth."
-
-- **Image:** SHOP-WOMAN in profile, lifting one of many colored glass perfume
-  bottles from a mirrored shelf. Dim, richly saturated, deep amber and violet.
-- **Motion:** she turns the bottle once in the light, sets it down, reaches for
-  another.
-
-### 10 — Escalation · 0:40–0:43 · Wide
-
-> **VO:** "Whatever we own, we are built never to be satisfied."
-
-- **Image:** SUIT-MAN in full silhouette on a balcony railing, back to camera,
-  overlooking an enormous night city of countless lights. Black and sodium
-  yellow, very high contrast.
+- **Image:** man in a dark suit from behind on a balcony at night, overlooking
+  a vast dense city of thousands of yellow and white lights. Black sky. The
+  only light is the city.
 - **Motion:** almost imperceptible drift back, widening the city around him.
+- **Continuity:** same suit and build as scene 7.
 
-### 11 — The Turn · 0:44–0:47 · Close-Up
+### 11 · 0:43–0:47 · 4s · Close-Up
 
-> **VO:** "So you want to be happy? Then be grateful for the moment going past right now."
-
-- **Image:** PRAYER-MAN in side profile, eyes closed, hands clasped and resting
-  against his forehead. Hard rim light along the edge of his face, background
-  falling to black.
+- **Image:** elderly man, 60s, tan skin, grey mustache, grey hair, glasses,
+  white shirt. Eyes closed, hands clasped near his chin in a prayer gesture.
+  Dramatic directional side light, deep shadows, dark defocused background.
 - **Motion:** nothing but breath. Let it be still.
 
-### 12 — Payoff · 0:48–0:53 · Medium · **longest hold, 6s**
+### 12 · 0:47–0:53 · 6s · Medium · **longest hold**
 
-> **VO:** "A warm meal. Real sleep. The voice of someone who loves you. That is enough."
+- **Image:** elderly man, fair skin, white hair, thick black glasses, navy polo
+  and khakis. On a red sofa, a vintage black corded telephone receiver at his
+  ear. Yellow-shaded lamp lighting from above-left. Cream wall, a small framed
+  picture behind him.
+- **Motion:** he laughs quietly at something on the line and looks down. Very
+  slow push in.
 
-- **Image:** man, 60s, white hair, glasses, blue shirt, on a red sofa in a
-  lamp-lit living room, holding a black corded telephone to his ear, beginning
-  to smile.
-- **Motion:** he laughs quietly at something said on the line and looks down.
-  Slow, tiny push in.
+### 13 · 0:53–0:56 · 3s · Wide
 
-### 13 — Payoff · 0:54–0:56 · Wide
-
-> **VO:** "If life hurts a little less, it has already succeeded."
-
-- **Image:** a still lake at dawn reflecting a treeline under flat grey cloud.
-  Muted green and blue. No people, no boat.
+- **Image:** a tranquil lake in daylight, still water mirroring green trees on
+  the far bank and large white clouds. Soft natural light, naturalistic grade.
 - **Motion:** the faintest ripple. Otherwise a photograph.
 
-### 14 — Attribution · 0:57–0:59 · Wide
+### 14 · 0:56–0:59 · 3s · Medium
 
-> **VO:** "From *The Eyes That Read People*, by Baltasar Gracián."
-
-- **Image:** a flat graphic book cover — hard blocks of black, deep green and
-  burnt orange, centered, flat even lighting, no lettering (title is added as
-  an overlay in the edit, not generated).
-- **Motion:** none. Static card.
+- **Image:** a flat graphic book cover on a dark background — four horizontal
+  bands: dark green at top, a wide black band, then thin red and yellow-orange
+  at the bottom. Flat even lighting. Generate it **blank**; the title goes on
+  as an overlay in the edit.
+- **Note:** the source cover is titled in Korean. The English version needs its
+  own title card — set *The Eyes That Read People / Baltasar Gracián* over the
+  black band in the caption typeface. Don't ask an image model to render the
+  lettering.
 
 ---
 
 ## Caption style
 
-Burn-in captions, 2–5 words per card, centered, lower third at ~72% height.
+Burn-in captions, 2–5 words per card, centred, lower third at ~72% height.
 Heavy geometric sans (Inter Black / Montserrat ExtraBold), pure white, 1px
-black stroke plus a soft drop shadow. Cards swap on the beat, no animation
-beyond a 2-frame fade. Full timing in `subtitles.srt`.
+black stroke plus a soft drop shadow, 2-frame fade between cards.
+
+Time the cards to the **voice**, not to the picture cuts — the two are
+deliberately out of phase. `subtitles.srt` is cut to the scene boundaries as a
+starting grid; nudge each card onto the actual narration once the VO take
+exists.
 
 ## Two things to watch
 
-1. **Scene 4 is the whole video.** It is the only 2-second cut and it carries
-   the thesis. If it doesn't feel like a slap, re-cut it tighter rather than
-   softening the surrounding scenes.
-2. **Don't let the grade drift warm on the pain beats.** Scenes 2, 3, 7, 10 must
-   stay cool; 1, 5, 6, 12 must stay warm. That alternation is doing the
-   emotional argument silently, underneath the narration.
+1. **Keep the palette alternation strict.** Scenes 2, 3, 7, 10 stay cool;
+   1, 5, 6, 12 stay warm. That alternation argues the thesis underneath the
+   narration, and it is the most reliable observation in the source analysis.
+2. **Don't let the VO breathe on the cuts.** If the narrator pauses every time
+   the picture changes, the whole thing collapses into a stock reel. One take,
+   steady, picture cut against it.
