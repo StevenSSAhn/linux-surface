@@ -93,6 +93,34 @@ powershell -ExecutionPolicy Bypass -File .\win11enable.ps1
 
 PowerShell 대신 `win11bypass.reg` 를 더블클릭해 병합해도 결과는 같습니다.
 
+#### 스크립트가 아무 출력 없이 끝날 때
+
+`powershell -ExecutionPolicy Bypass -File .\win11enable.ps1` 이 아무것도 출력하지 않고
+끝나는 환경이 확인됐습니다 (Surface Book 2 / Windows 10 22H2). 원인은 아직 특정하지
+못했지만, 아래 명령을 관리자 PowerShell 에 그대로 붙여넣으면 스크립트와 동일한 결과를
+얻을 수 있습니다. 실제 장비에서 동작을 확인한 방법입니다.
+
+```powershell
+$admin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+"Administrator : $admin"
+if (-not $admin) { "관리자 권한으로 다시 실행하세요"; return }
+
+New-Item -Path 'HKLM:\SYSTEM\Setup\MoSetup' -Force | Out-Null
+New-ItemProperty -Path 'HKLM:\SYSTEM\Setup\MoSetup' -Name 'AllowUpgradesWithUnsupportedTPMOrCPU' -Value 1 -PropertyType DWord -Force | Out-Null
+
+New-Item -Path 'HKLM:\SYSTEM\Setup\LabConfig' -Force | Out-Null
+foreach ($n in 'BypassTPMCheck','BypassSecureBootCheck','BypassCPUCheck','BypassRAMCheck','BypassStorageCheck') {
+    New-ItemProperty -Path 'HKLM:\SYSTEM\Setup\LabConfig' -Name $n -Value 1 -PropertyType DWord -Force | Out-Null
+}
+
+"--- 적용 결과 ---"
+Get-ItemProperty 'HKLM:\SYSTEM\Setup\MoSetup'   | Select-Object AllowUpgradesWithUnsupportedTPMOrCPU | Format-List
+Get-ItemProperty 'HKLM:\SYSTEM\Setup\LabConfig' | Select-Object Bypass* | Format-List
+```
+
+같은 이유로 4단계의 `win11setup.ps1` 도 건너뛸 수 있습니다. ISO 를 탐색기에서
+더블클릭해 마운트한 뒤 그 드라이브의 `setup.exe` 를 직접 실행하면 됩니다.
+
 ### 4단계 — ISO 로 업그레이드
 
 **중요**: Windows Update 나 "Windows 11 설치 도우미" 는 위 레지스트리를 무시합니다.
