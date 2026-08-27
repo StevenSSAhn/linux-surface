@@ -3,7 +3,7 @@
     Windows 11 ISO 를 마운트하고 요구 사항 검사를 우회하는 방식으로 setup.exe 를 실행합니다.
 
 .DESCRIPTION
-    Enable-Win11Upgrade.ps1 로 레지스트리를 설정한 뒤에도 설치 관리자가 막을 때 사용합니다.
+    win11enable.ps1 로 레지스트리를 설정한 뒤에도 설치 관리자가 막을 때 사용합니다.
     세 가지 방식 중 하나를 고를 수 있습니다.
 
       Registry     레지스트리 우회만 믿고 setup.exe 를 그대로 실행 (기본값, 가장 깔끔)
@@ -23,10 +23,10 @@
     AppraiserRes 방식에서 ISO 내용을 풀어 놓을 폴더. 기본값은 시스템 드라이브의 Win11Setup.
 
 .EXAMPLE
-    powershell -ExecutionPolicy Bypass -File .\Start-Win11Setup.ps1
+    powershell -ExecutionPolicy Bypass -File .\win11setup.ps1
 
 .EXAMPLE
-    powershell -ExecutionPolicy Bypass -File .\Start-Win11Setup.ps1 -IsoPath D:\Win11.iso -Method AppraiserRes
+    powershell -ExecutionPolicy Bypass -File .\win11setup.ps1 -IsoPath D:\Win11.iso -Method AppraiserRes
 #>
 
 [CmdletBinding()]

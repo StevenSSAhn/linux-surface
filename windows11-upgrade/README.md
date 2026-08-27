@@ -15,11 +15,11 @@
 
 | 파일 | 용도 |
 | --- | --- |
-| `Check-Win11Readiness.ps1` | 어떤 항목 때문에 막히는지 진단 (시스템 변경 없음) |
-| `Enable-Win11Upgrade.ps1` | 검사 우회 레지스트리 적용 / `-Revert` 로 원복 |
-| `Start-Win11Setup.ps1` | ISO 마운트 후 우회 방식으로 설치 관리자 실행 |
-| `win11-bypass.reg` | PowerShell 없이 더블클릭으로 적용하는 레지스트리 파일 |
-| `win11-bypass-revert.reg` | 위 레지스트리 값 제거 |
+| `win11check.ps1` | 어떤 항목 때문에 막히는지 진단 (시스템 변경 없음) |
+| `win11enable.ps1` | 검사 우회 레지스트리 적용 / `-Revert` 로 원복 |
+| `win11setup.ps1` | ISO 마운트 후 우회 방식으로 설치 관리자 실행 |
+| `win11bypass.reg` | PowerShell 없이 더블클릭으로 적용하는 레지스트리 파일 |
+| `win11revert.reg` | 위 레지스트리 값 제거 |
 
 ## 사용 순서
 
@@ -27,17 +27,26 @@
 
 이 폴더 전체를 대상 Windows PC 의 아무 폴더(예: `C:\win11`)에 복사합니다.
 
+> 파일명에 하이픈을 쓰지 않은 이유: 일부 다운로드 경로가 파일명의 `-` 를 제거해
+> `win11-check.ps1` 이 `win11check.ps1` 로 저장되면서 경로를 못 찾는 일이 있었습니다.
+> 복사 후 `dir` 로 파일명이 아래 표와 같은지 먼저 확인하세요.
+
 ### 1단계 — 원인 진단
 
 먼저 무엇이 막고 있는지 확인합니다. **PowerShell 을 관리자 권한으로** 열고:
 
 ```powershell
 cd C:\win11
-powershell -ExecutionPolicy Bypass -File .\Check-Win11Readiness.ps1
+powershell -ExecutionPolicy Bypass -File .\win11check.ps1
 ```
 
 CPU / 메모리 / 디스크 / UEFI / GPT / 보안 부팅 / TPM 항목을 표로 보여 주고,
-"실패" 로 나온 항목이 바로 차단 원인입니다.
+"실패" 로 나온 항목이 바로 차단 원인입니다. 같은 내용이 `win11-report.txt` 로도
+저장되므로 그 파일을 그대로 복사해 전달할 수 있습니다.
+
+검사 항목 하나가 오류를 내도 나머지 결과는 그대로 출력되며, 오류 메시지는 `비고`
+열에 표시됩니다. 표가 아예 안 나온다면 PowerShell 이 스크립트 파일을 못 찾은
+경우이니 `dir` 로 파일명을 확인하세요.
 
 ### 2단계 — 우회하기 전에, UEFI 설정부터 확인
 
@@ -67,7 +76,7 @@ mbr2gpt.exe /convert /allowFullOS
 관리자 PowerShell 에서:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\Enable-Win11Upgrade.ps1
+powershell -ExecutionPolicy Bypass -File .\win11enable.ps1
 ```
 
 적용되는 값은 두 가지입니다.
@@ -82,7 +91,7 @@ powershell -ExecutionPolicy Bypass -File .\Enable-Win11Upgrade.ps1
 공식 키만 적용하려면 `-OfficialOnly`, 되돌리려면 `-Revert` 를 붙이면 됩니다.
 변경 전 상태는 `%USERPROFILE%\Win11BypassBackup\` 에 `.reg` 로 자동 백업됩니다.
 
-PowerShell 대신 `win11-bypass.reg` 를 더블클릭해 병합해도 결과는 같습니다.
+PowerShell 대신 `win11bypass.reg` 를 더블클릭해 병합해도 결과는 같습니다.
 
 ### 4단계 — ISO 로 업그레이드
 
@@ -94,7 +103,7 @@ PowerShell 대신 `win11-bypass.reg` 를 더블클릭해 병합해도 결과는 
 2. 관리자 PowerShell 에서:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\Start-Win11Setup.ps1
+powershell -ExecutionPolicy Bypass -File .\win11setup.ps1
 ```
 
 ISO 를 자동으로 찾아 마운트하고 설치 관리자를 실행합니다.
@@ -110,10 +119,10 @@ ISO 를 자동으로 찾아 마운트하고 설치 관리자를 실행합니다.
 
 ```powershell
 # 방법 A: 설치 관리자를 서버 설치 경로로 실행해 호환성 검사를 건너뜀
-powershell -ExecutionPolicy Bypass -File .\Start-Win11Setup.ps1 -Method ProductServer
+powershell -ExecutionPolicy Bypass -File .\win11setup.ps1 -Method ProductServer
 
 # 방법 B: 호환성 검사 모듈(appraiserres.dll)을 빈 파일로 교체 — 가장 확실, 여유 공간 10GB 필요
-powershell -ExecutionPolicy Bypass -File .\Start-Win11Setup.ps1 -Method AppraiserRes
+powershell -ExecutionPolicy Bypass -File .\win11setup.ps1 -Method AppraiserRes
 ```
 
 방법 B 는 ISO 내용을 `C:\Win11Setup` 에 복사한 뒤 `sources\appraiserres.dll` 을 0바이트
@@ -135,9 +144,9 @@ USB 를 만들 때 [Rufus](https://rufus.ie) 를 쓰면 "확장된 Windows 11 �
 ## 되돌리기
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\Enable-Win11Upgrade.ps1 -Revert
+powershell -ExecutionPolicy Bypass -File .\win11enable.ps1 -Revert
 ```
 
-또는 `win11-bypass-revert.reg` 더블클릭. 이미 업그레이드를 마쳤다면 레지스트리를 되돌려도
+또는 `win11revert.reg` 더블클릭. 이미 업그레이드를 마쳤다면 레지스트리를 되돌려도
 Windows 11 은 그대로 유지되며, 설치 후 10일 이내라면
 `설정 → 시스템 → 복구 → 돌아가기` 로 Windows 10 으로 롤백할 수 있습니다.

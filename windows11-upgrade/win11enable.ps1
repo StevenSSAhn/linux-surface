@@ -23,10 +23,10 @@
 
 .EXAMPLE
     # 관리자 PowerShell 에서
-    powershell -ExecutionPolicy Bypass -File .\Enable-Win11Upgrade.ps1
+    powershell -ExecutionPolicy Bypass -File .\win11enable.ps1
 
 .EXAMPLE
-    powershell -ExecutionPolicy Bypass -File .\Enable-Win11Upgrade.ps1 -Revert
+    powershell -ExecutionPolicy Bypass -File .\win11enable.ps1 -Revert
 
 .NOTES
     요구 사항을 충족하지 않는 PC 에 Windows 11 을 설치하면 제조사/Microsoft 의 지원 대상에서
@@ -163,5 +163,5 @@ Write-Host '  3. 마운트된 드라이브의 setup.exe 를 실행합니다.'
 Write-Host '     (Windows Update 나 "설치 도우미"가 아니라 ISO 의 setup.exe 여야 우회가 적용됩니다.)'
 Write-Host '  4. "설정, 개인 파일 및 앱 유지"를 선택하면 기존 환경 그대로 업그레이드됩니다.'
 Write-Host ''
-Write-Host '  같은 폴더의 Start-Win11Setup.ps1 을 쓰면 2~3 단계를 자동으로 처리합니다.' -ForegroundColor DarkGray
+Write-Host '  같은 폴더의 win11setup.ps1 을 쓰면 2~3 단계를 자동으로 처리합니다.' -ForegroundColor DarkGray
 Write-Host ''
