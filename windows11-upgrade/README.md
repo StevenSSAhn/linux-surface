@@ -85,8 +85,36 @@ powershell -ExecutionPolicy Bypass -File .\win11enable.ps1
    Microsoft 가 **공식 문서에서 직접 안내하는 값**입니다. TPM 1.2 이상이고 보안 부팅이
    켜진 상태에서 "지원되지 않는 CPU" 때문에 막힐 때 씁니다.
 2. `HKLM\SYSTEM\Setup\LabConfig\Bypass*Check = 1`
-   설치 관리자가 참조하는 개별 검사(TPM / 보안 부팅 / CPU / RAM / 디스크) 우회 값입니다.
-   TPM 이 아예 없거나 보안 부팅을 켤 수 없을 때 필요합니다.
+   개별 검사(TPM / 보안 부팅 / CPU / RAM / 디스크) 우회 값입니다.
+
+> **중요 — LabConfig 는 인플레이스 업그레이드에 적용되지 않습니다.**
+> `LabConfig` 키는 USB 로 부팅해 설치하는 경로(WinPE)에서만 읽힙니다. Windows 안에서
+> `setup.exe` 를 실행하는 인플레이스 업그레이드에는 `MoSetup` 키만 영향을 줍니다.
+> 그리고 `MoSetup` 키는 **TPM 1.2 이상이 존재할 때** "지원되지 않는 CPU" 를 통과시켜
+> 주는 값이라, TPM 이 아예 없으면 여전히 다음 화면에서 막힙니다.
+>
+> ```
+> 이 PC는 현재 Windows 11 시스템 요구 사항을 충족하지 않습니다.
+>   ✖ PC에서 TPM 2.0을 지원해야 합니다.
+> ```
+>
+> 이 경우 아래 "TPM 이 없어서 막힐 때" 를 따르세요.
+
+#### TPM 이 없어서 막힐 때
+
+**먼저 펌웨어에서 TPM 을 켜 보세요.** 대부분의 기기는 TPM 칩이 있는데 꺼져 있을 뿐입니다.
+Surface 는 종료 상태에서 `볼륨 ↑` 을 누른 채 `전원` 을 눌러 UEFI 진입 → **Security** →
+**Trusted Platform Module (TPM)** → Enabled.
+
+> 리눅스 듀얼 부팅 때문에 망설일 필요 없습니다. 리눅스 부팅을 막는 것은 Secure Boot 이고,
+> TPM 활성화는 부팅에 영향을 주지 않습니다. Secure Boot 는 꺼둔 채로도 Windows 11 이
+> 설치됩니다 (Windows 11 은 "Secure Boot 지원 가능" 을 요구할 뿐 "켜져 있을 것" 을
+> 요구하지 않습니다).
+
+재부팅 후 관리자 PowerShell 에서 `Get-Tpm` 이 `TpmPresent : True` 를 보고하면
+`setup.exe` 를 다시 실행하면 됩니다.
+
+TPM 을 켤 수 없다면 4단계의 `/product server` 또는 `appraiserres.dll` 방식을 쓰세요.
 
 공식 키만 적용하려면 `-OfficialOnly`, 되돌리려면 `-Revert` 를 붙이면 됩니다.
 변경 전 상태는 `%USERPROFILE%\Win11BypassBackup\` 에 `.reg` 로 자동 백업됩니다.
